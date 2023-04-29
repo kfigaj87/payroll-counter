@@ -1,0 +1,27 @@
+h2 {
+  border: 2px solid black;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+#calculate {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.main-div {
+  display: flex;
+
+  align-content: flex-start;
+}
+
+.first-div {
+  width: 60%;
+}
+
+.secound-div {
+  width: 40%;
+  display: flex;
+}

@@ -1,39 +1,39 @@
-const obliczButton = document.querySelector("#oblicz");
-const pracownicy = document.querySelectorAll("#pracownicy .pracownik");
-const czasInputs = document.querySelectorAll(".czas");
-const stawkaInputs = document.querySelectorAll(".stawka");
-const wyplataSpans = document.querySelectorAll(".wyplata");
-const najlepsiPracownicySpan = document.querySelector("#najlepsi-pracownicy");
+const calculate = document.querySelector("#calculate");
+const employees = document.querySelectorAll("#employees .employee");
+const timeInputs = document.querySelectorAll(".time");
+const rateInputs = document.querySelectorAll(".rate");
+const paymentSpans = document.querySelectorAll(".payment");
+const bestEmployeesSpan = document.querySelector("#best-employees");
 
-obliczButton.addEventListener("click", () => {
-  let najlepsiPracownicy = [];
+calculate.addEventListener("click", () => {
+  let bestEmployees = [];
 
-  for (let i = 0; i < pracownicy.length; i++) {
-    let czas = parseInt(czasInputs[i].value);
-    let stawka = parseInt(stawkaInputs[i].value);
-    let wyplata = czas * stawka;
+  for (let i = 0; i < employees.length; i++) {
+    let time = parseInt(timeInputs[i].value);
+    let rate = parseInt(rateInputs[i].value);
+    let payment = time * rate;
 
-    if (czas > 160) {
-      pracownicy[i].parentElement.style.backgroundColor = "green";
-      wyplata += (czas - 160) * stawka * 2;
+    if (time > 160) {
+      employees[i].parentElement.style.backgroundColor = "green";
+      payment += (time - 160) * rate * 2;
     }
 
-    wyplataSpans[i].innerHTML = wyplata;
+    paymentSpans[i].innerHTML = payment;
 
-    if (czas < 100) {
-      pracownicy[i].parentElement.style.backgroundColor = "red";
+    if (time < 100) {
+      employees[i].parentElement.style.backgroundColor = "red";
     }
 
-    najlepsiPracownicy.push({
-      name: pracownicy[i].innerHTML,
-      czas: czas,
+    bestEmployees.push({
+      name: employees[i].innerHTML,
+      time: time,
     });
   }
 
-  najlepsiPracownicy.sort((a, b) => b.czas - a.czas);
-  najlepsiPracownicy = najlepsiPracownicy.slice(0, 3);
-  najlepsiPracownicySpan.innerHTML = najlepsiPracownicy
-    .map((employee) => `${employee.name} (${employee.czas} godzin)`)
+  bestEmployees.sort((a, b) => b.time - a.time);
+  bestEmployees = bestEmployees.slice(0, 3);
+  bestEmployeesSpan.innerHTML = bestEmployees
+    .map((employee) => `${employee.name} (working time - ${employee.time})`)
     .join(", ");
-  console.log("Trzech najlepszych pracowników:", najlepsiPracownicy);
+  console.log("Top three employees:", bestEmployees);
 });
