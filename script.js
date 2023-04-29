@@ -35,5 +35,4 @@ calculate.addEventListener("click", () => {
   bestEmployeesSpan.innerHTML = bestEmployees
     .map((employee) => `${employee.name} (working time - ${employee.time})`)
     .join(", ");
-  console.log("Top three employees:", bestEmployees);
 });
